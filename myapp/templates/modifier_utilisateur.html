@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Modifier l'utilisateur{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">
+      Modifier l'utilisateur
+    </h2>
+    <p class="mt-2 text-gray-600 dark:text-gray-400">
+      Modifier les informations de l'utilisateur <span class="font-semibold">{{ user_to_edit.username }}</span>
+    </p>
+  </div>
+
+  <!-- Form -->
+  <form method="post" class="space-y-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8">
+    {% csrf_token %}
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for field in form %}
+      <div class="space-y-2">
+        <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          {{ field.label }}
+        </label>
+        <div class="relative rounded-lg shadow-sm">
+          {{ field }}
+        </div>
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="pt-6">
+      <button type="submit" 
+              class="w-full inline-flex justify-center items-center px-6 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg transition-all duration-200 transform hover:translate-y-[-2px] hover:shadow-lg text-lg">
+        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+        </svg>
+        Enregistrer les modifications
+      </button>
+    </div>
+  </form>
+
+  <!-- Back Link -->
+  <div class="mt-8 text-center">
+    <a href="{% url 'admin_dashboard' %}" 
+       class="inline-flex items-center text-sm text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/>
+      </svg>
+      Retour au tableau de bord
+    </a>
+  </div>
+</div>
+{% endblock %} 

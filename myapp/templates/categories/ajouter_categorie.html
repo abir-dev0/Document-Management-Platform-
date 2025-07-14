@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Ajouter une catégorie{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto">
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">
+      Ajouter une catégorie
+    </h2>
+  </div>
+  <!-- Formulaire -->
+  <form method="post" class="space-y-6">
+    {% csrf_token %}
+    <div class="space-y-2">
+      <label for="nom" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        Nom de la catégorie
+      </label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+          </svg>
+        </div>
+        <input type="text" 
+               name="nom" 
+               id="nom" 
+               required
+               class="block w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+               placeholder="Entrez le nom de la catégorie">
+      </div>
+    </div>
+
+    <div class="flex space-x-4">
+      <button type="submit" 
+              class="flex-1 inline-flex justify-center items-center px-4 py-3 bg-primary-500 hover:bg-primary-400 text-white rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+        Ajouter la catégorie
+      </button>
+      
+      <a href="{% url 'liste_categories' %}" 
+         class="flex-1 inline-flex justify-center items-center px-4 py-3 bg-gray-500 hover:bg-gray-400 text-white rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Retour
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %} 

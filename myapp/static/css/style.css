@@ -1,0 +1,87 @@
+/* Base transition for smooth UI */
+* {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #121212 !important;
+  padding: 1rem;
+}
+.navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.navbar .btn {
+  margin-left: 10px;
+}
+
+/* Message alert */
+.alert {
+  border-radius: 6px;
+  font-weight: 500;
+  animation: fadeIn 1s ease;
+}
+
+/* Custom Button Hover */
+.button.is-outline:hover {
+  background-color: #00d1b2;
+  color: white;
+}
+
+/* Table */
+.table thead {
+  background-color: #f5f5f5;
+}
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Admin Dashboard Animations */
+.box {
+  animation: fadeInUp 0.7s;
+}
+
+/* Mode sombre auto */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+
+  .navbar {
+    background-color: #222 !important;
+  }
+
+  .table {
+    background-color: #2a2a2a;
+    color: #ddd;
+  }
+
+  .table thead {
+    background-color: #333;
+  }
+
+  .box {
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+  }
+
+  .alert {
+    background-color: #333;
+    border: 1px solid #555;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
